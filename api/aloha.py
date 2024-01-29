@@ -13,10 +13,10 @@ class handler(BaseHTTPRequestHandler):
     # get ?eggs=fried
     # returns {"eggs":"fried"}
 
-    name = dict.get('name')
+    name = dic.get('name')
 
     if name:
-      messsage = f'Aloha {name}'
+      message = f'Aloha {name}'
     else:
       message = f'Aloha stranger'
 
