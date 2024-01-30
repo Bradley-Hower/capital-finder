@@ -12,14 +12,14 @@ class handler(BaseHTTPRequestHandler):
 
     if 'capital' in country:
       url = f'https://restcountries.com/v3.1/capital/'
-      country_resposne = requests.get(url + lex['capital'])
-      data = country_resposne.json()
+      country_response = requests.get(url + lex['capital'])
+      data = country_response.json()
       country = data["name"]["common"]
       message = f'{["capital"]} is the capital of {country}.'
     elif 'country' in country:
       url = f'https://restcountries.com/v3.1/name/'
-      capital_resposne = requests.get(url + lex['country'])
-      data = capital_resposne.json()
+      capital_response = requests.get(url + lex['country'])
+      data = capital_response.json()
       capital = data["capital"][0]
       message = f'{["country"]} is the capital of {capital}.'
     else:
@@ -28,5 +28,5 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    self.wfile.werite(message.encode('utf-8'))
+    self.wfile.write(message.encode('utf-8'))
     return
