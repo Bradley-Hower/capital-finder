@@ -10,16 +10,16 @@ class handler(BaseHTTPRequestHandler):
     query_string_list = parse.parse_qsl(url_components.query)
     lex = dict(query_string_list)
 
-    if 'capital' in country:
+    if 'capital' in lex:
       url = f'https://restcountries.com/v3.1/capital/'
-      country_response = requests.get(url + lex['capital'])
-      data = country_response.json()
+      api_response = requests.get(url + lex['capital'])
+      data = api_response.json()
       country = data["name"]["common"]
       message = f'{["capital"]} is the capital of {country}.'
-    elif 'country' in country:
+    elif 'country' in lex:
       url = f'https://restcountries.com/v3.1/name/'
-      capital_response = requests.get(url + lex['country'])
-      data = capital_response.json()
+      api_response = requests.get(url + lex['country'])
+      data = api_response.json()
       capital = data["capital"][0]
       message = f'{["country"]} is the capital of {capital}.'
     else:
