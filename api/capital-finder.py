@@ -15,13 +15,13 @@ class handler(BaseHTTPRequestHandler):
       api_response = requests.get(url + lex['capital'])
       data = api_response.json()
       country = data[0]["name"]["common"]
-      message = f'{lex["capital"]} is the capital of {country}.'
+      message = f'{lex["capital"].title()} is the capital of {country}.'
     elif 'country' in lex:
       url = f'https://restcountries.com/v3.1/name/'
       api_response = requests.get(url + lex['country'])
       data = api_response.json()
       capital = data[0]["capital"][0]
-      message = f'{lex["country"]} is the capital of {capital}.'
+      message = f'The capital of {lex["country"]} is {capital}.'
     else:
       message = 'Nothing was found.'
 
