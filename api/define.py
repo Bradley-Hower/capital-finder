@@ -18,7 +18,7 @@ class handler(BaseHTTPRequestHandler):
       data = dict_response.json()
       definitions = []
       for word_data in data:
-        definition = word_data['meanings'][0]['definitions'][0]['definition']
+        definition = word_data["meanings"][0]["definitions"][0]["definition"]
         definitions.append(definition)
       message = str(definitions)
 
