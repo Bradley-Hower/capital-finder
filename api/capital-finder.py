@@ -11,13 +11,13 @@ class handler(BaseHTTPRequestHandler):
     lex = dict(query_string_list)
 
     if 'capital' in lex:
-      url = f'https://restcountries.com/v3.1/capital/'
+      url = f'https://restcountries.com/v3/capital/'
       api_response = requests.get(url + lex['capital'])
       data = api_response.json()
       country = data["name"]["common"]
       message = f'{lex["capital"]} is the capital of {country}.'
     elif 'country' in lex:
-      url = f'https://restcountries.com/v3.1/name/'
+      url = f'https://restcountries.com/v3/name/'
       api_response = requests.get(url + lex['country'])
       data = api_response.json()
       capital = data["capital"][0]
